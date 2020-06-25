@@ -1,0 +1,79 @@
+//PROJECT EULER
+// 2. EVEN FIBONACCI NUMBERS
+var toplam = 0;
+var a = 1;
+var b = 0;
+
+for (a; a < 4000000;) {
+    a = b + a;
+    b = a - b;
+    
+    if (a % 2 === 0) {
+        sum = sum + a;
+    }
+}
+
+console.log(sum)
+// 12. HIGHLY DIVISIBLE TRIANGULAR NUMBER
+var number=0;
+var n=1;
+while(number===0){
+
+var count=0;
+var trinum= (n*(n+1))/2;
+
+for(i=1;i<=Math.sqrt(trinum);i++){
+if(trinum%i===0){             
+count+=2;                              
+}
+}
+
+if(count>500){
+number=trinum;
+break;
+}
+
+n+=1;
+console.log(count,trinum,n);
+}
+console.log(number);
+//LEETCODE
+// 112. PATH SUM
+var hasPathSum = function(root, sum) {
+  if (!root) return false;
+  if (!root.left && !root.right && root.val === sum) return true;
+  return hasPathSum(root.left, sum - root.val) || hasPathSum(root.right, sum - root.val)
+};
+// 122. BEST TIME TO BUY SELL STOCK 2
+/**
+ * @param {number[]} prices
+ * @return {number}
+ */
+var maxProfit = function(prices) {
+    let profit = 0;
+
+    for(let i = 1; i < prices.length; i++) {
+        if (prices[i] > prices[i -1]) {
+            profit  = profit + prices[i] - prices[i - 1];
+        }
+    }
+
+    return profit;
+};
+// 172.FACTORIAL TRAILING ZEROES
+/**
+ * @param {number} n
+ * @return {number}
+ */
+var trailingZeroes = function(n) {
+    if(n < 5) return 0 ;
+
+    var count = 0;
+
+    while(n >= 5){
+        count += Math.floor(n/5);
+        n = parseInt(n/5);
+    }
+
+    return count;
+};
